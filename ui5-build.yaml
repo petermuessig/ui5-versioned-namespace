@@ -1,0 +1,38 @@
+specVersion: "3.0"
+metadata:
+  name: &namespace com.myorg.myapp.v3
+type: application
+framework:
+  name: OpenUI5
+  version: "1.115.1"
+  libraries:
+    - name: sap.m
+    - name: sap.ui.core
+    - name: themelib_sap_horizon
+builder:
+  customTasks:
+  - name: ui5-task-stringreplacer
+    beforeTask: replaceCopyright
+    configuration: &stringreplacerConfig
+      debug: true
+      files:
+        - "**/*.html"
+        - "**/*.json"
+        - "**/*.js"
+        - "**/*.xml"
+      replace:
+        - placeholder: $namespace$
+          value: *namespace 
+#  - name: ui5-task-cachebuster
+#    afterTask: uglify
+#    configuration:
+#      debug: true
+#      moveResources: false
+#      excludeFromMove: ["index.html", "logout.html"]
+server:
+  customMiddleware:
+  - name: ui5-middleware-stringreplacer
+    beforeMiddleware: csp
+    configuration: *stringreplacerConfig
+  - name: ui5-middleware-livereload
+    afterMiddleware: compression

@@ -1,0 +1,23 @@
+{
+  "name": "ui5-versioned-namespace",
+  "version": "1.0.0",
+  "description": "UI5 Application: ui5-versioned-namespace (myapp)",
+  "author": "Peter Muessig",
+  "license": "Apache-2.0",
+  "private": true,
+  "scripts": {
+    "build": "ui5 build --clean-dest --config ui5-build.yaml",
+    "build:opt": "ui5 build self-contained --clean-dest --all",
+    "start": "ui5 serve --port 8080 -o index.html --config ui5-build.yaml",
+    "start:dist": "ui5 serve  --port 8080 -o index.html --config ui5-dist.yaml",
+    "lint": "eslint webapp"
+  },
+  "devDependencies": {
+    "@ui5/cli": "^3.3.1",
+    "eslint": "^8.44.0",
+    "ui5-middleware-livereload": "^0.8.4",
+    "ui5-middleware-stringreplacer": "^0.5.1",
+    "ui5-task-cachebuster": "^0.3.10",
+    "ui5-task-stringreplacer": "^0.8.0"
+  }
+}

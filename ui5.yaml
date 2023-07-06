@@ -1,0 +1,8 @@
+specVersion: "3.0"
+metadata:
+  name: &namespace com.myorg.myapp.v3
+type: library
+resources:
+  configuration:
+    paths:
+      src: "dist"
